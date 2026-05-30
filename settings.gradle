@@ -7,7 +7,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'vs_supp_fix'
+rootProject.name = 'vs_sup_fix'
 
 include 'common'
 include 'fabric'

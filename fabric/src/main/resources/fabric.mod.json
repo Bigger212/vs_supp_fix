@@ -1,38 +1,41 @@
 {
   "schemaVersion": 1,
-  "id": "vs_supp_fix",
-  "version": "${version}",
-  "name": "Valkyrien Skies 2 + Supplementaries Fix",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "id": "${mod_id}",
+  "version": "${mod_version}",
+  "name": "${mod_name}",
+  "description": "${mod_description}",
   "authors": [
-    "Me!"
+    "${mod_author}"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "${mod_homepage}",
+    "sources": "${mod_sources}"
   },
-  "license": "CC0-1.0",
-  "icon": "assets/vs_supp_fix/icon.png",
+  "license": "${mod_license}",
+  "icon": "${logo_file}",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.bigger212.fabric.VSSuppFixFabric"
-    ],
-    "client": [
-      "com.bigger212.fabric.client.ExampleModFabricClient"
+      "com.bigger212.fabric.VSSupFixFabric"
     ]
   },
   "mixins": [
-    "vs_supp_fix.mixins.json"
+    "vs_sup_fix.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.18.0",
-    "minecraft": "~1.20.1",
-    "java": ">=17",
-    "architectury": ">=9.2.14",
-    "fabric-api": "*"
+    "java": ">=${java_version}",
+    "minecraft": "~${minecraft_version}",
+
+    "fabricloader": ">=${fabric_loader_version}",
+
+    "architectury": ">=${architectury_api_version}",
+    "fabric-api": "*",
+    
+    "valkyrienskies": ">=${vs2_version}",
+    "supplementaries": ">=${supp_version}",
+    "moonlight": ">=${moonlight_version}"
   },
   "suggests": {
-    "another-mod": "*"
+    "eureka": "*"
   }
 }

@@ -6,6 +6,8 @@
   "client": [
   ],
   "mixins": [
+    "CannonBallEntityPatch",
+    "ImprovedProjectileEntityPatch"
   ],
   "injectors": {
     "defaultRequire": 1

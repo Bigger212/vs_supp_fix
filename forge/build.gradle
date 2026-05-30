@@ -4,7 +4,7 @@ plugins {
 
 loom {
     forge {
-        mixinConfig "vs_supp_fix.mixins.json"
+        mixinConfig "vs_sup_fix.mixins.json"
     }
 }
 
@@ -40,13 +40,40 @@ dependencies {
     shadowBundle project(path: ':common', configuration: 'transformProductionForge')
 }
 
+
+//
 processResources {
-    inputs.property 'version', project.version
+    inputs.property 'mod_id', rootProject.mod_id
+    inputs.property 'mod_name', rootProject.mod_name
+    inputs.property 'mod_version', rootProject.mod_version
+    inputs.property 'mod_description', rootProject.mod_description
+    inputs.property 'mod_author', rootProject.mod_author
+    inputs.property 'mod_license', rootProject.mod_license
+    inputs.property 'mod_homepage', rootProject.mod_homepage
+    inputs.property 'mod_sources', rootProject.mod_sources
+    inputs.property 'logo_file', rootProject.logo_file
+
+    inputs.property 'minecraft_version', rootProject.minecraft_version
+    inputs.property 'java_version', rootProject.java_version
+
+    inputs.property 'pack_format', rootProject.pack_format
+
+    inputs.property 'forge_major_version', rootProject.forge_major_version
+    inputs.property 'forge_version', rootProject.forge_version
+    inputs.property 'architectury_api_version', rootProject.architectury_api_version
+
+    inputs.property 'vs2_version', rootProject.vs2_version
+    inputs.property 'supp_version', rootProject.supp_version
+    inputs.property 'moonlight_version', rootProject.moonlight_version
 
     filesMatching('META-INF/mods.toml') {
-        expand version: inputs.properties.version
+        expand inputs.properties
+    }
+    filesMatching('pack.mcmeta') {
+        expand inputs.properties
     }
 }
+
 
 shadowJar {
     configurations = [project.configurations.shadowBundle]

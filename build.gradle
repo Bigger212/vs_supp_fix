@@ -23,6 +23,8 @@ subprojects {
         archivesName = "$rootProject.archives_name-$project.name"
     }
 
+
+    //
     repositories {
         // Add repositories to retrieve artifacts from in here.
         // You should only use this when depending on other mods because
@@ -30,6 +32,7 @@ subprojects {
         // See https://docs.gradle.org/current/userguide/declaring_repositories.html
         // for more information about repositories.
     }
+
 
     loom {
         silentMojangMappingsLicense()
@@ -46,12 +49,12 @@ subprojects {
         // If you remove this line, sources will not be generated.
         withSourcesJar()
 
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.toVersion(rootProject.java_version)
+        targetCompatibility = JavaVersion.toVersion(rootProject.java_version)
     }
 
     tasks.withType(JavaCompile).configureEach {
-        it.options.release = 17
+        it.options.release = rootProject.java_version.toInteger()
     }
 
     // Configure Maven publishing.

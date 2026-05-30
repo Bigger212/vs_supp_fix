@@ -1,56 +1,61 @@
 modLoader = "javafml"
-loaderVersion = "[47,)"
-#issueTrackerURL = ""
-license = "Insert License Here"
+loaderVersion = "[${forge_major_version},)"
+license = "${mod_license}"
 
 [[mods]]
-modId = "vs_supp_fix"
-version = "${version}"
-displayName = "Valkyrien Skies 2 + Supplementaries Fix"
-authors = "Bigger212"
-description = '''
-A few simple patches to Valkyrien Skies and Supplementaries for compatibility.
-'''
-#logoFile = ""
+modId = "${mod_id}"
+version = "${mod_version}"
+displayName = "${mod_name}"
+authors = "${mod_author}"
+description = '''${mod_description}'''
+logoFile = "${logo_file}"
+license = "${mod_license}"
 
-[[dependencies.vs_supp_fix]]
+[[dependencies.vs_sup_fix]]
 modId = "forge"
 mandatory = true
-versionRange = "[47,)"
+versionRange = "[${forge_major_version},)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.vs_supp_fix]]
+[[dependencies.vs_sup_fix]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.20.1,)"
+versionRange = "[${minecraft_version},1.21)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.vs_supp_fix]]
+[[dependencies.vs_sup_fix]]
 modId = "architectury"
 mandatory = true
-versionRange = "[9.2.14,)"
+versionRange = "[${architectury_api_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
-[[dependencies.vs_supp_fix]]
-modId = "valkyrienskies" # Valkyrien Skies
+[[dependencies.vs_sup_fix]]
+modId = "valkyrienskies"
 mandatory = true
 versionRange = "[${vs2_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
-[[dependencies.vs_supp_fix]]
-modId = "" # Supplementaries
+[[dependencies.vs_sup_fix]]
+modId = "supplementaries"
 mandatory = true
-versionRange = "[1.20.1,)"
-ordering = "NONE"
+versionRange = "[${supp_version},)"
+ordering = "AFTER"
 side = "BOTH"
 
-[[dependencies.vs_supp_fix]]
-modId = "" # Moonlight
+[[dependencies.vs_sup_fix]]
+modId = "moonlight"
 mandatory = true
-versionRange = "[1.20.1,)"
-ordering = "NONE"
+versionRange = "[${moonlight_version},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.vs_sup_fix]]
+modId = "eureka"
+mandatory = false
+versionRange = "[0,)"
+ordering = "AFTER"
 side = "BOTH"
