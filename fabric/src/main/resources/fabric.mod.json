@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "vs_supp_fix",
+  "version": "${version}",
+  "name": "Valkyrien Skies 2 + Supplementaries Fix",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "Me!"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/vs_supp_fix/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.bigger212.fabric.VSSuppFixFabric"
+    ],
+    "client": [
+      "com.bigger212.fabric.client.ExampleModFabricClient"
+    ]
+  },
+  "mixins": [
+    "vs_supp_fix.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "architectury": ">=9.2.14",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
