@@ -1,7 +1,6 @@
 package com.bigger212.mixin;
 
 import java.util.Set;
-import net.bigger212.vs_sup_fix.vs_sup_fix;
 import net.mehvahdjukaar.supplementaries.common.entities.CannonBallEntity;
 import net.mehvahdjukaar.supplementaries.common.misc.explosion.CannonBallExplosion;
 import net.mehvahdjukaar.supplementaries.configs.CommonConfigs.Functional;

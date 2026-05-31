@@ -35,21 +35,21 @@ side = "BOTH"
 [[dependencies.vs_sup_fix]]
 modId = "valkyrienskies"
 mandatory = true
-versionRange = "[${vs2_version},)"
+versionRange = "[0,)""
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.vs_sup_fix]]
 modId = "supplementaries"
 mandatory = true
-versionRange = "[${supp_version},)"
+versionRange = "[0,)""
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.vs_sup_fix]]
 modId = "moonlight"
 mandatory = true
-versionRange = "[${moonlight_version},)"
+versionRange = "[0,)"
 ordering = "AFTER"
 side = "BOTH"
 

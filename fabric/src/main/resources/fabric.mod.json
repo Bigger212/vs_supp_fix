@@ -31,9 +31,9 @@
     "architectury": ">=${architectury_api_version}",
     "fabric-api": "*",
     
-    "valkyrienskies": ">=${vs2_version}",
-    "supplementaries": ">=${supp_version}",
-    "moonlight": ">=${moonlight_version}"
+    "valkyrienskies": "*",
+    "supplementaries": "*",
+    "moonlight": "*"
   },
   "suggests": {
     "eureka": "*"
