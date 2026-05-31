@@ -28,36 +28,35 @@ public abstract class CannonBallEntityPatch {
       at = {@At("HEAD")}
    )
    private void injectOnBlockHit(BlockHitResult result, CallbackInfo ci) {
-      CannonBallEntity self = (CannonBallEntity)this;
-      Level level = self.m_9236_();
+      CannonBallEntity self = (CannonBallEntity)(Object)this;
+      Level level = self.level();
+      
       if (level instanceof ServerLevel serverLevel) {
-         Vec3 hitPos = result.m_82450_();
-         Ship ship = VSGameUtilsKt.getShipObjectManagingPos(serverLevel, result.m_82425_());
+         Vec3 hitPos = result.getLocation();
+         Ship ship = VSGameUtilsKt.getShipObjectManagingPos(serverLevel, result.getBlockPos());
+         
          if (ship != null) {
             double radius;
-            if (vs_sup_fix.DAMAGE_SHIPS_UNIQUELY) {
-               radius = vs_sup_fix.CANNONBALL_BREAK_RADIUS;
-            } else {
-               try {
-                  radius = (Double)Functional.CANNONBALL_BREAK_RADIUS.get();
-               } catch (NullPointerException | NoSuchFieldError var20) {
-                  radius = vs_sup_fix.CANNONBALL_BREAK_RADIUS;
-               }
+            
+            try {
+                radius = (Double)Functional.CANNONBALL_BREAK_RADIUS.get();
+            } catch (NullPointerException | NoSuchFieldError var20) {
+                radius = 1.1;
             }
 
-            Vec3 movement = self.m_20184_();
-            double vel = Math.abs(movement.m_82553_());
+            Vec3 movement = self.getDeltaMovement();
+            double vel = Math.abs(movement.length());
             float scaling = 5.0F;
             float maxAmount = (float)(vel * vel * (double)scaling);
-            Vector3d hitPosJoml = new Vector3d(hitPos.f_82479_, hitPos.f_82480_, hitPos.f_82481_);
+            Vector3d hitPosJoml = new Vector3d(hitPos.x, hitPos.y, hitPos.z);
             Vector3d shipHitPosJoml = ship.getWorldToShip().transformPosition(hitPosJoml);
             Vec3 shipHitPos = new Vec3(shipHitPosJoml.x, shipHitPosJoml.y, shipHitPosJoml.z);
-            BlockPos shipCenter = new BlockPos((int)Math.floor(shipHitPos.f_82479_), (int)Math.floor(shipHitPos.f_82480_), (int)Math.floor(shipHitPos.f_82481_));
+            BlockPos shipCenter = new BlockPos((int)Math.floor(shipHitPos.x), (int)Math.floor(shipHitPos.y), (int)Math.floor(shipHitPos.z));
             CannonBallExplosion explosion = new CannonBallExplosion(level, (Entity)null, shipHitPosJoml.x, shipHitPosJoml.y, shipHitPosJoml.z, shipCenter, maxAmount, (float)radius, (Set)null);
-            explosion.m_46061_();
-            explosion.m_46075_(true);
+            
+            explosion.explode();
+            explosion.finalizeExplosion(true);
          }
-
       }
    }
 }

@@ -25,9 +25,10 @@ public abstract class ImprovedProjectileEntityPatch {
 )
    )
    private BlockHitResult redirectAABBCollision(Entity entity, Vec3 movement, double distance) {
-      Vec3 start = entity.m_20182_();
-      Vec3 end = start.m_82549_(movement);
+      Vec3 start = entity.position();
+      Vec3 end = start.add(movement);
       ClipContext context = new ClipContext(start, end, Block.COLLIDER, Fluid.NONE, entity);
-      return RaycastUtilsKt.clipIncludeShips(entity.m_9236_(), context);
+      
+      return RaycastUtilsKt.clipIncludeShips(entity.level(), context);
    }
 }
