@@ -31,6 +31,17 @@ dependencies {
     // Architectury API. This is optional, and you can comment it out if you don't need it.
     modImplementation "dev.architectury:architectury-fabric:$rootProject.architectury_api_version"
 
+
+    //
+    modImplementation "curse.maven:valkyrien-skies-258371:7906680"
+    modImplementation "curse.maven:supplementaries-412082:7884612"
+    modImplementation "curse.maven:selene-499980:8076689"
+    //modImplementation "curse.maven:fabric-language-kotlin-308769:7976268"
+    modImplementation "net.fabricmc:fabric-language-kotlin:1.13.6+kotlin.2.2.20"
+    modImplementation "maven.modrinth:forge-config-api-port:v8.0.2-1.20.1-Fabric"
+    modImplementation "curse.maven:eureka-ships-654384:7979377"
+    
+
     common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
 }
