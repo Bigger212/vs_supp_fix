@@ -11,10 +11,21 @@ dependencies {
     // Architectury API. This is optional, and you can comment it out if you don't need it.
     modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
 
-    //
-    modImplementation "org.valkyrienskies.core:api:1.1.0+1d4a7373e9"
 
-    modCompileOnly "curse.maven:valkyrien-skies-258371:7906689"
-    modCompileOnly "curse.maven:supplementaries-412082:7884611"
-    modCompileOnly "curse.maven:selene-499980:8076692"
+    // Mixin
+    implementation(("io.github.llamalad7:mixinextras-common:0.4.1"))
+
+
+    // VS2
+    modCompileOnly("org.valkyrienskies:valkyrienskies-120-common:${rootProject.vs2_maven_version}") {
+    transitive = false
+    }
+    compileOnly "org.valkyrienskies.core:api:${rootProject.vs_core_version}"
+    //implementation "org.valkyrienskies.core:impl:${rootProject.vs_core_version}"
+    //implementation "org.valkyrienskies.core:internal:${rootProject.vs_core_version}"
+
+
+    // Supplementaries
+    modCompileOnly "curse.maven:supplementaries-412082:${rootProject.supplementaries_fabric_file}"
+    modCompileOnly "curse.maven:selene-499980:${rootProject.moonlight_fabric_file}"
 }

@@ -32,14 +32,35 @@ dependencies {
     modImplementation "dev.architectury:architectury-fabric:$rootProject.architectury_api_version"
 
 
-    //
-    modImplementation "curse.maven:valkyrien-skies-258371:7906680"
-    modImplementation "curse.maven:supplementaries-412082:7884612"
-    modImplementation "curse.maven:selene-499980:8076689"
-    //modImplementation "curse.maven:fabric-language-kotlin-308769:7976268"
-    modImplementation "net.fabricmc:fabric-language-kotlin:1.13.6+kotlin.2.2.20"
+    // Mixin
+    include(annotationProcessor(implementation("io.github.llamalad7:mixinextras-fabric:0.4.1")))
+
+
+    // VS2
+    modImplementation "curse.maven:valkyrien-skies-258371:${rootProject.vs2_fabric_file}"
+    // modImplementation("org.valkyrienskies:valkyrienskies-120-fabric:${rootProject.vs2_version}") {
+    // transitive = false
+    // }
+    compileOnly "org.valkyrienskies.core:api:${rootProject.vs_core_version}"
+    //implementation "org.valkyrienskies.core:util:${rootProject.vs_core_version}"
+    //implementation "org.valkyrienskies.core:internal:${rootProject.vs_core_version}"
+    modImplementation "net.fabricmc:fabric-language-kotlin:${rootProject.fabric_language_kotlin_version}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.0.0"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:2.0.0"
     modImplementation "maven.modrinth:forge-config-api-port:v8.0.2-1.20.1-Fabric"
-    modImplementation "curse.maven:eureka-ships-654384:7979377"
+
+
+    // Suplementaries
+    modImplementation("curse.maven:supplementaries-412082:${rootProject.supplementaries_fabric_file}") {
+    transitive = false
+    }
+    modImplementation("curse.maven:selene-499980:${rootProject.moonlight_fabric_file}") {
+        transitive = false
+    }
+
+
+    // Eureka for testing
+    modImplementation "curse.maven:eureka-ships-654384:${rootProject.eureka_fabric_file}"
     
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
@@ -49,8 +70,12 @@ dependencies {
 
 //
 processResources {
-    inputs.property 'mod_id', rootProject.mod_id
+    // Minecraft properties
+    inputs.property 'java_version', rootProject.java_version
+    inputs.property 'minecraft_version', rootProject.minecraft_version
+    // Mod properties
     inputs.property 'mod_name', rootProject.mod_name
+    inputs.property 'mod_id', rootProject.mod_id
     inputs.property 'mod_version', rootProject.mod_version
     inputs.property 'mod_description', rootProject.mod_description
     inputs.property 'mod_author', rootProject.mod_author
@@ -58,17 +83,13 @@ processResources {
     inputs.property 'mod_homepage', rootProject.mod_homepage
     inputs.property 'mod_sources', rootProject.mod_sources
     inputs.property 'logo_file', rootProject.logo_file
-
-    inputs.property 'minecraft_version', rootProject.minecraft_version
-    inputs.property 'java_version', rootProject.java_version
-
-    inputs.property 'fabric_loader_version', rootProject.fabric_loader_version
-    inputs.property 'fabric_api_version', rootProject.fabric_api_version
+    // Architectury Dependencies
     inputs.property 'architectury_api_version', rootProject.architectury_api_version
-
-    inputs.property 'vs2_version', rootProject.vs2_version
-    inputs.property 'supp_version', rootProject.supp_version
-    inputs.property 'moonlight_version', rootProject.moonlight_version
+    // Fabric Dependencies
+    inputs.property 'fabric_loader_version', rootProject.fabric_loader_version
+    // VS2 Dependencies
+    // Supplementaries Dependencies
+    // Eureka (testing only)
 
     filesMatching('fabric.mod.json') {
         expand inputs.properties
