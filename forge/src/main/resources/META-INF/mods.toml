@@ -14,7 +14,7 @@ license = "${mod_license}"
 [[dependencies.vs_sup_fix]]
 modId = "forge"
 mandatory = true
-versionRange = "[${forge_major_version},)"
+versionRange = "[0,)"
 ordering = "NONE"
 side = "BOTH"
 
@@ -28,7 +28,7 @@ side = "BOTH"
 [[dependencies.vs_sup_fix]]
 modId = "architectury"
 mandatory = true
-versionRange = "[${architectury_api_version},)"
+versionRange = "[0,)"
 ordering = "AFTER"
 side = "BOTH"
 
