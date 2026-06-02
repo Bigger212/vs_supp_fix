@@ -51,12 +51,8 @@ dependencies {
 
 
     // Suplementaries
-    modImplementation("curse.maven:supplementaries-412082:${rootProject.supplementaries_fabric_file}") {
-    transitive = false
-    }
-    modImplementation("curse.maven:selene-499980:${rootProject.moonlight_fabric_file}") {
-        transitive = false
-    }
+    modImplementation "curse.maven:supplementaries-412082:${rootProject.supplementaries_fabric_file}"
+    modImplementation "curse.maven:selene-499980:${rootProject.moonlight_fabric_file}"
 
 
     // Eureka for testing

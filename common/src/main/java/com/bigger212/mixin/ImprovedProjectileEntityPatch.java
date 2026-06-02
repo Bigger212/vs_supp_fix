@@ -12,6 +12,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.valkyrienskies.mod.common.world.RaycastUtilsKt;
 
+/*
+* Replace Moonlight's projectile raycast collision query with a
+* compatible, ship-aware raycast from VS Common so cannon projectiles can 
+* detect blocks on assembled ships.
+*/
 @Mixin({ImprovedProjectileEntity.class})
 public abstract class ImprovedProjectileEntityPatch {
    public ImprovedProjectileEntityPatch() {
@@ -24,11 +29,11 @@ public abstract class ImprovedProjectileEntityPatch {
    target = "Lnet/mehvahdjukaar/moonlight/api/util/math/MthUtils;collideWithSweptAABB(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/phys/Vec3;D)Lnet/minecraft/world/phys/BlockHitResult;"
 )
    )
-   private BlockHitResult redirectAABBCollision(Entity entity, Vec3 movement, double distance) {
+   private BlockHitResult vs_sup_fix$redirectBlockHitResult(Entity entity, Vec3 movement, double distance) {
       Vec3 start = entity.position();
       Vec3 end = start.add(movement);
       ClipContext context = new ClipContext(start, end, Block.COLLIDER, Fluid.NONE, entity);
-      
+      // No fallback needed. Moonlight raycast is now ship-aware.
       return RaycastUtilsKt.clipIncludeShips(entity.level(), context);
    }
 }

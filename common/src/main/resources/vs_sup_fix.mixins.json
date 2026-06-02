@@ -5,7 +5,9 @@
   "minVersion": "0.8",
   "mixins": [
     "CannonBallEntityPatch",
-    "ImprovedProjectileEntityPatch"
+    "ImprovedProjectileEntityPatch",
+    "CannonControllerPatch",
+    "CannonBlockTilePatch"
   ],
   "client": [],
   "injectors": {
