@@ -33,7 +33,7 @@ dependencies {
 
 
     // Mixin
-    include(annotationProcessor(implementation("io.github.llamalad7:mixinextras-fabric:0.4.1")))
+    //include(annotationProcessor(implementation("io.github.llamalad7:mixinextras-fabric:0.4.1")))
 
 
     // VS2
