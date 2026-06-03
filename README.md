@@ -9,6 +9,7 @@ Known Issues
 - C2ME is incompatible due to Valkyrien Skies chunk management overlap.
 - All VS2 incompatabilities.
 - All Supplementaries incompatabilities.
+- Accidentally made Architectury API a required dependency. Sorry i'll fix it later. 
 - ...
 - ¯\_(ツ)_/¯
 ```
