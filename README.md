@@ -16,6 +16,7 @@ Known Issues
 ## Reporting Issues
 If you encounter a crash or unexpected behavior, please create an issue and include:
 * Minecraft version
+* Valkyrien Skies + Supplementaries versions.
 * Mod loader (Forge/Fabric) and version
 * Full mod list
 * Steps to reproduce
